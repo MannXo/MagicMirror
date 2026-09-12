@@ -11,36 +11,44 @@
   padding-bottom: 6px;
 }
 
-.weather .weather-forecast tr {
-  display: flex;
+.weather .weather-forecast,
+.weather .weather-hourly {
+  display: grid;
+  width: max-content;
+  grid-template-columns: repeat(7, max-content);
+}
+
+.weather .weather-forecast-row,
+.weather .weather-hourly-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: baseline;
+  column-gap: 25px;
 }
 
 .weather .day {
-  padding-left: 0;
-  padding-right: 25px;
+  white-space: nowrap;
 }
 
 .weather .weather-icon {
-  padding-right: 30px;
   text-align: center;
 }
 
 .weather .min-temp {
-  padding-left: 0;
   padding-right: 0;
 }
 
-.weather .max-temp {
-  padding-left: 20px;
-}
-
+.weather .max-temp,
 .weather .precipitation-amount,
 .weather .precipitation-prob,
 .weather .humidity-hourly,
 .weather .uv-index {
-  padding-left: 20px;
-  padding-right: 0;
+  padding: 0;
+}
+
+.weather .weather-hidden {
+  visibility: hidden;
 }
 
 .weather .weather-forecast .day {
@@ -71,11 +79,41 @@
   order: var(--weather-forecast-precipitation-prob-order, 7);
 }
 
-.weather tr.colored .min-temp {
+.weather .weather-hourly .time {
+  order: var(--weather-hourly-time-order, 1);
+  white-space: nowrap;
+}
+
+.weather .weather-hourly .weather-icon {
+  order: var(--weather-hourly-icon-order, 2);
+  text-align: center;
+}
+
+.weather .weather-hourly .temperature {
+  order: var(--weather-hourly-temperature-order, 3);
+}
+
+.weather .weather-hourly .uv-index {
+  order: var(--weather-hourly-uv-index-order, 4);
+}
+
+.weather .weather-hourly .humidity-hourly {
+  order: var(--weather-hourly-humidity-order, 5);
+}
+
+.weather .weather-hourly .precipitation-amount {
+  order: var(--weather-hourly-precipitation-amount-order, 6);
+}
+
+.weather .weather-hourly .precipitation-prob {
+  order: var(--weather-hourly-precipitation-prob-order, 7);
+}
+
+.weather .weather-forecast-row.colored .min-temp {
   color: #bcddff;
 }
 
-.weather tr.colored .max-temp {
+.weather .weather-forecast-row.colored .max-temp {
   color: #ff8e99;
 }
 
